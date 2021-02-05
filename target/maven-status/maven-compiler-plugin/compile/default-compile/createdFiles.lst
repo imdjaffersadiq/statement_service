@@ -1,0 +1,9 @@
+org\mycompany\model\AccountDetailsResponse.class
+org\mycompany\model\RetrieveOnlineStatementRequest.class
+org\mycompany\model\StatementResponse.class
+org\mycompany\services\StatementServices.class
+org\mycompany\model\AccountDetailRequest.class
+org\mycompany\Application.class
+org\mycompany\model\StatementRequest.class
+org\mycompany\services\RetrieveStatementService.class
+org\mycompany\model\RetrieveOnlineStatementResponse.class
