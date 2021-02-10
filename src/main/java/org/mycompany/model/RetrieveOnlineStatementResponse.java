@@ -8,7 +8,7 @@ public class RetrieveOnlineStatementResponse {
 	private String address1;
 	private String address2;
 	private String balance;
-	private String fault;
+	private FaultType fault;
 	public String getAccountNumber() {
 		return accountNumber;
 	}
@@ -45,10 +45,10 @@ public class RetrieveOnlineStatementResponse {
 	public void setBalance(String balance) {
 		this.balance = balance;
 	}
-	public String getFault() {
+	public FaultType getFault() {
 		return fault;
 	}
-	public void setFault(String fault) {
+	public void setFault(FaultType fault) {
 		this.fault = fault;
 	}
 	

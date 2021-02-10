@@ -6,7 +6,7 @@ items:
   kind: "Service"
   metadata:
     annotations:
-      fabric8.io/git-commit: "1ab3c30576f7953ac79cb942fd9f43cb79bd9731"
+      fabric8.io/git-commit: "5629a1bf193d225dc934b213a3d4e1e29425d771"
       fabric8.io/git-branch: "main"
       fabric8.io/git-url: "https://github.com/imdjaffersadiq/statement_service.git"
       prometheus.io/port: "9779"
@@ -36,7 +36,7 @@ items:
   kind: "Deployment"
   metadata:
     annotations:
-      fabric8.io/git-commit: "1ab3c30576f7953ac79cb942fd9f43cb79bd9731"
+      fabric8.io/git-commit: "5629a1bf193d225dc934b213a3d4e1e29425d771"
       fabric8.io/git-branch: "main"
       fabric8.io/git-url: "https://github.com/imdjaffersadiq/statement_service.git"
     labels:
@@ -56,7 +56,7 @@ items:
     template:
       metadata:
         annotations:
-          fabric8.io/git-commit: "1ab3c30576f7953ac79cb942fd9f43cb79bd9731"
+          fabric8.io/git-commit: "5629a1bf193d225dc934b213a3d4e1e29425d771"
           fabric8.io/git-branch: "main"
           fabric8.io/git-url: "https://github.com/imdjaffersadiq/statement_service.git"
         labels:
