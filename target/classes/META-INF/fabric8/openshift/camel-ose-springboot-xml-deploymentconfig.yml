@@ -3,9 +3,9 @@ apiVersion: "apps.openshift.io/v1"
 kind: "DeploymentConfig"
 metadata:
   annotations:
-    fabric8.io/git-commit: "5629a1bf193d225dc934b213a3d4e1e29425d771"
+    fabric8.io/git-commit: "6e4b9b9b0d24635a3aacabb21875b4c221d56899"
     fabric8.io/git-branch: "main"
-    fabric8.io/git-url: "https://github.com/imdjaffersadiq/statement_service.git"
+    fabric8.io/git-url: "https://gitlab.com/imdjaffersadiq/statement-service.git"
   labels:
     app: "camel-ose-springboot-xml"
     provider: "fabric8"
@@ -26,9 +26,9 @@ spec:
   template:
     metadata:
       annotations:
-        fabric8.io/git-commit: "5629a1bf193d225dc934b213a3d4e1e29425d771"
+        fabric8.io/git-commit: "6e4b9b9b0d24635a3aacabb21875b4c221d56899"
         fabric8.io/git-branch: "main"
-        fabric8.io/git-url: "https://github.com/imdjaffersadiq/statement_service.git"
+        fabric8.io/git-url: "https://gitlab.com/imdjaffersadiq/statement-service.git"
       labels:
         rht.prod_ver: "7.8"
         rht.comp_ver: "1.0.0-SNAPSHOT"
@@ -48,7 +48,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: "metadata.namespace"
-        image: "mycompany/camel-ose-springboot-xml:latest"
+        image: "camel-ose-springboot-xml:latest"
         imagePullPolicy: "IfNotPresent"
         livenessProbe:
           failureThreshold: 3

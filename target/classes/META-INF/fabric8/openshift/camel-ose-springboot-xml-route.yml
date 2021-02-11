@@ -3,9 +3,9 @@ apiVersion: "route.openshift.io/v1"
 kind: "Route"
 metadata:
   annotations:
-    fabric8.io/git-commit: "5629a1bf193d225dc934b213a3d4e1e29425d771"
+    fabric8.io/git-commit: "6e4b9b9b0d24635a3aacabb21875b4c221d56899"
     fabric8.io/git-branch: "main"
-    fabric8.io/git-url: "https://github.com/imdjaffersadiq/statement_service.git"
+    fabric8.io/git-url: "https://gitlab.com/imdjaffersadiq/statement-service.git"
   labels:
     expose: "true"
     app: "camel-ose-springboot-xml"

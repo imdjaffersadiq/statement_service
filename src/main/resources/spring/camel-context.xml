@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring      https://camel.apache.org/schema/spring/camel-spring.xsd">
-    <bean class="org.mycompany.services.StatementServices" id="StatementService"/>
     <bean class="org.mycompany.services.RetrieveStatementService" id="RetrieveStatementService"/>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <dataFormats>
@@ -10,30 +9,12 @@
         <restConfiguration bindingMode="json" component="jetty"
             host="0.0.0.0" port="8080"/>
         <rest id="rest" path="/statement">
-            <get id="rest-id"
-                outType="org.mycompany.model.StatementResponse"
-                type="org.mycompany.model.StatementRequest" uri="/print">
-                <to uri="direct:generateStatement"/>
-            </get>
             <get id="rest-id1"
                 outType="org.mycompany.model.RetrieveOnlineStatementResponse"
                 type="org.mycompany.model.RetrieveOnlineStatementRequest" uri="/retrieveStatement">
                 <to uri="direct:retrieveStatement"/>
             </get>
         </rest>
-        <route id="generateStatement">
-            <from id="_from1" uri="direct:generateStatement"/>
-            <!--             <setBody id="_setBody2">
-            <simple>${in.headers.loggerContext}</simple>
-            </setBody> -->
-            <to id="_to1" uri="StatementService"/>
-            <setHeader headerName="Content-Type" id="_setHeader1">
-                <constant>application/json</constant>
-            </setHeader>
-            <setBody id="_setBody">
-                <simple>${body[0]}</simple>
-            </setBody>
-        </route>
         <route id="retrieveStatement">
             <from id="_from2" uri="direct:retrieveStatement"/>
             <to id="_to2" uri="RetrieveStatementService"/>
