@@ -48,5 +48,5 @@ Then create the quickstart template:
 Now when you use "Add to Project" button in the OpenShift console, you should see a template for this quickstart. 
 
 # statement_service
-aremovedd
+remofemroe
 I added POST_HOOK
