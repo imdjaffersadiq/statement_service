@@ -49,4 +49,4 @@ Now when you use "Add to Project" button in the OpenShift console, you should se
 
 # statement_service
 updated git hoonnk
-I added POST_HOOKndjfnddjfbdjfbdjfdjfdjvdjvdjfndfj
+I added POST_HOOKndjfnddjfbdjfbdjfdjfdjvdjvdjfndjfndndndnddfj
