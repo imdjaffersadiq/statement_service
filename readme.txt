@@ -1,1 +1,1 @@
-Commiiting yhe git url
+cd Commiiting yhe git url
