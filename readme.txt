@@ -1,3 +1,1 @@
-cd Commiiting yhe git url
-check
-bhhjjjj
+Updated the secret
