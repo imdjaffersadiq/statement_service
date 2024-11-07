@@ -90,7 +90,7 @@
 			<artifactId>camel-jackson</artifactId>
 			<!--<version>3.20.4</version> -->
 			<!-- <version>${camel.version}</version> -->
-		</dependency> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
