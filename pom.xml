@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.alahli.middleware.connector.statement</groupId>
 	<artifactId>Middleware-statement</artifactId>
@@ -73,18 +73,24 @@
 			<artifactId>camel-spring-boot-starter</artifactId>
 			<!--<version>3.20.4</version> -->
 		</dependency>
-		<!--<dependency><groupId>org.apache.camel.springboot</groupId><artifactId>camel-stream-starter</artifactId> -->
+		<!--<dependency> <groupId>org.apache.camel.springboot</groupId> <artifactId>camel-stream-starter</artifactId> -->
 		<!-- <version>3.20.4</version> -->
 		<!--</dependency> -->
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-servlet-starter</artifactId>
 		</dependency>
-		<!--<dependency><groupId>org.apache.camel</groupId><artifactId>camel-http</artifactId> -->
+		<!--<dependency> <groupId>org.apache.camel</groupId> <artifactId>camel-http</artifactId> -->
 		<!--<version>3.20.4</version> -->
 		<!--</dependency> -->
-		<!-- <dependency><groupId>org.apache.camel.springboot</groupId><artifactId>camel-http-starter</artifactId></dependency> -->
-		<!-- <dependency><groupId>org.apache.camel</groupId><artifactId>camel-jackson</artifactId><version>3.20.4</version><version>${camel.version}</versio></dependency> -->
+		<!-- <dependency> <groupId>org.apache.camel.springboot</groupId> <artifactId>camel-http-starter</artifactId> 
+			</dependency> -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>
+			<!--<version>3.20.4</version> -->
+			<!-- <version>${camel.version}</version> -->
+		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -94,7 +100,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><scope>runtime</scope><version>8.0.28</version></dependency> -->
+		<!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+			<scope>runtime</scope> <version>8.0.28</version> </dependency> -->
+		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.eirslett</groupId>
+			<artifactId>frontend-maven-plugin</artifactId>
+			<version>1.12.1</version>
+		</dependency>
 		<!-- Tracing dependencies -->
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
@@ -121,7 +142,11 @@
 			<version>0.33.0</version>
 		</dependency>
 		<!--Logging Dependency -->
-		<!-- 		<dependency><groupId>com.alahli.middleware.connector.logging</groupId><artifactId>Middleware-LoggingFramework</artifactId><version>1.0.1</version></dependency> -->
+		<!-- 		<dependency>
+			<groupId>com.alahli.middleware.connector.logging</groupId>
+			<artifactId>Middleware-LoggingFramework</artifactId>
+			<version>1.0.1</version>
+		</dependency> -->
 	</dependencies>
 	<build>
 		<plugins>
@@ -146,7 +171,70 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin><groupId>org.apache.httpcomponents</groupId><artifactId>httpclient</artifactId><version>4.5.3</version></plugin> -->
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.12.1</version>
+				<configuration>
+					<workingDirectory>react-frontend</workingDirectory>
+					<installDirectory>target</installDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v14.15.0</nodeVersion>
+							<npmVersion>6.14.8</npmVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm run build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/public</outputDirectory>
+							<resources>
+								<resource>
+									<directory>react-frontend/build</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.httpcomponents</groupId> <artifactId>httpclient</artifactId> 
+				<version>4.5.3</version> </plugin> -->
 			<!-- added by Jafer -->
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
@@ -161,14 +249,86 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- 			<plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-deploy-plugin</artifactId><version>${maven-deploy-plugin.version}</version><configuration><skip>true</skip></configuration></plugin><plugin><groupId>org.sonatype.plugins</groupId><artifactId>nexus-staging-maven-plugin</artifactId><version>1.5.1</version><executions><execution><id>default-deploy</id><phase>deploy</phase><goals><goal>deploy</goal></goals></execution></executions><configuration><serverId>nexus</serverId><nexusUrl>http://nexus-middleware-nexus.apps.ocp4-cluster-001.int.dhdigital.co.in/nexus/</nexusUrl><skipStaging>true</skipStaging></configuration></plugin> -->
+			<!-- 			<plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-deploy-plugin</artifactId>
+			   <version>${maven-deploy-plugin.version}</version>
+			   <configuration>
+			      <skip>true</skip>
+			   </configuration>
+			</plugin>			
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.5.1</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<serverId>nexus</serverId>
+					<nexusUrl>http://nexus-middleware-nexus.apps.ocp4-cluster-001.int.dhdigital.co.in/nexus/</nexusUrl>
+					<skipStaging>true</skipStaging>
+				</configuration>
+			</plugin> -->
 		</plugins>
 		<pluginManagement/>
 	</build>
 	<!-- added by jafer -->
-	<!-- 	<distributionManagement><snapshotRepository><id>nexus-snapshots</id><url>http://nexus-middleware-nexus.apps.ocp4-cluster-001.int.dhdigital.co.in/repository/maven-snapshots/</url></snapshotRepository></distributionManagement> -->
+	<!-- 	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://nexus-middleware-nexus.apps.ocp4-cluster-001.int.dhdigital.co.in/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement> -->
 	<repositories>
-		<!-- 		<repository><id>redhat.ga</id><name>Red Hat General Availability Repository</name><url>https://maven.repository.redhat.com/ga</url><layout>default</layout><snapshots><enabled>false</enabled></snapshots><releases><enabled>true</enabled><updatePolicy>never</updatePolicy></releases></repository><repository><id>central</id><name>Central Repository</name><url>https://repo.maven.apache.org/maven2</url><layout>default</layout><snapshots><enabled>false</enabled></snapshots></repository><repository><id>red-hat-ea-repository</id><name>Red Hat EA Repository</name><url>https://maven.repository.redhat.com/earlyaccess/all</url><releases><enabled>true</enabled><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></repository><repository><id>jboss-ea</id><url>https://repository.jboss.org/nexus/content/groups/ea</url><releases><enabled>true</enabled></releases><snapshots><enabled>false</enabled></snapshots></repository> -->
+		<!-- 		<repository>
+			<id>redhat.ga</id>
+			<name>Red Hat General Availability Repository</name>
+			<url>https://maven.repository.redhat.com/ga</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases> <enabled>true</enabled> <updatePolicy>never</updatePolicy> 
+				</releases>
+		</repository>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>red-hat-ea-repository</id>
+			<name>Red Hat EA Repository</name>
+			<url>https://maven.repository.redhat.com/earlyaccess/all</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jboss-ea</id>
+			<url>https://repository.jboss.org/nexus/content/groups/ea</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository> -->
 		<repository>
 			<id>nexus</id>
 			<url>${env.REPO_PATH}</url>
@@ -181,7 +341,44 @@
 		</repository>
 	</repositories>
 	<pluginRepositories>
-		<!-- 		<pluginRepository><snapshots><enabled>false</enabled></snapshots><id>redhat.ga</id><name>Red Hat General Availability Repository</name><url>https://maven.repository.redhat.com/ga</url></pluginRepository><pluginRepository><snapshots><enabled>false</enabled></snapshots><id>maven.central</id><name>>Maven Central</name><url>https://repo1.maven.org/maven2</url></pluginRepository><pluginRepository><id>red-hat-ea-repository</id><name>Red Hat EA Repository</name><url>https://maven.repository.redhat.com/earlyaccess/all</url><releases><enabled>true</enabled><updatePolicy>never</updatePolicy></releases><snapshots><enabled>false</enabled></snapshots></pluginRepository><pluginRepository><id>jboss-ea</id><url>https://origin-repository.jboss.org/nexus/content/groups/ea</url><releases><enabled>true</enabled></releases><snapshots><enabled>false</enabled></snapshots></pluginRepository> -->
+		<!-- 		<pluginRepository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>redhat.ga</id>
+			<name>Red Hat General Availability Repository</name>
+			<url>https://maven.repository.redhat.com/ga</url>
+		</pluginRepository>
+		<pluginRepository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>maven.central</id>
+			<name>>Maven Central</name>
+			<url>https://repo1.maven.org/maven2</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>red-hat-ea-repository</id>
+			<name>Red Hat EA Repository</name>
+			<url>https://maven.repository.redhat.com/earlyaccess/all</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-ea</id>
+			<url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository> -->
 		<pluginRepository>
 			<id>nexus</id>
 			<url>${env.REPO_PATH}</url>
