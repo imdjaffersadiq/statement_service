@@ -4,7 +4,7 @@
     <mirror>
       <id>Nexus</id>
       <name>Nexus Public Mirror</name>
-      <url>http://192.168.60.20:8081/repository/maven-all-public/</url>
+      <url>http://192.168.10.190:8081/repository/maven-public/</url>
       <!--  <url>http://nexus.nexus.svc.cluster.local:8081/repository/maven-releases/</url>  -->
       <mirrorOf>*</mirrorOf>
     </mirror>
