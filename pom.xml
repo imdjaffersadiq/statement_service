@@ -4,10 +4,10 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.alahli.middleware.connector.configstore</groupId>
-	<artifactId>Middleware-ConfigStoreConnector</artifactId>
+	<groupId>com.alahli.middleware.statement</groupId>
+	<artifactId>Middleware-Statement</artifactId>
 	<version>1.0.1</version>
-	<name>Middleware-ConfigStoreConnector</name>
+	<name>Middleware-Statement</name>
 	<description>MiddlewareConfigStoreConnector Package</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
